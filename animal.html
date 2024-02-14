@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+ <title>Animal Games</title>
+<body>
+<h1>Animal game by Yash Jagdishkumar Agrawal</h1>
+<form>
+    <label for="secretAnimal">The hidden animal type:</label><br>
+    <input type="password" id="form1_secretAnimal" value="Chicken"><br><br>
+    
+    <label for="guessAnimal">Guess the animal:</label><br>
+    <input type="text" id="form1_guessAnimal" autofocus><br><br>
+    
+    <button type="button" onclick="checkAnimal()">Check the guess</button>
+  </form>
+  
+  <p id="result">This text will be replaced</p>
+  <script>
+    // global variables
+    let wrong = 0;
+    let correct = 0;
+    
+    function checkAnimal() {
+      const secretAnimal = document.getElementById("form1_secretAnimal").value;
+      const guessAnimal = document.getElementById("form1_guessAnimal").value;
+      
+      if (secretAnimal === guessAnimal) {
+        correct++;
+        alert("Ruff ruff");
+      } else {
+        wrong++;
+        alert("Grrrr");
+      }
+      
+      document.getElementById("result").innerHTML = `Correct guesses: ${correct}, Wrong guesses: ${wrong}`;
+    }
+  </script>
+</script>
+
+</body>
+</html> 
