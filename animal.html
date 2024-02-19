@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html>
- <title>Animal Games</title>
+<title>Animal Games</title>
+
 <body>
-<h1>Animal game by Yash Jagdishkumar Agrawal</h1>
-<form>
-    <label for="secretAnimal">The hidden animal type:</label><br>
-    <input type="password" id="form1_secretAnimal" value="Chicken"><br><br>
-    
-    <label for="guessAnimal">Guess the animal:</label><br>
-    <input type="text" id="form1_guessAnimal" autofocus><br><br>
-    
+  <h1>Animal game by Yash Jagdishkumar Agrawal</h1>
+  <form>
+    <label for="secretAnimal">The hidden animal type:</label><br />
+    <input type="password" id="form1_secretAnimal" value="Chicken" /><br /><br />
+
+    <label for="guessAnimal">Guess the animal:</label><br />
+    <input type="text" id="form1_guessAnimal" autofocus /><br /><br />
+
     <button type="button" onclick="checkAnimal()">Check the guess</button>
   </form>
-  
   <p id="result">This text will be replaced</p>
+  <div id="imageContainer">
+    <img src="Image/apple_juice.jpg" alt="apple_juice" onclick="selectImage()" width="150" height="150" />
+  </div>
   <script>
     // global variables
     let wrong = 0;
     let correct = 0;
-    
+    let useImage = 1;
+
     function checkAnimal() {
-      const secretAnimal = document.getElementById("form1_secretAnimal").value;
+      const secretAnimal =
+        document.getElementById("form1_secretAnimal").value;
       const guessAnimal = document.getElementById("form1_guessAnimal").value;
-      
+
       if (secretAnimal === guessAnimal) {
         correct++;
         alert("Ruff ruff");
@@ -30,11 +35,29 @@
         wrong++;
         alert("Grrrr");
       }
-      
+
       document.getElementById("result").innerHTML = `Correct guesses: ${correct}, Wrong guesses: ${wrong}`;
     }
-  </script>
-</script>
 
+    function selectImage() {
+      switch (useImage) {
+        case 1:
+          document.querySelector("#imageContainer img").src = "Image/red_wine.jpg";
+          useImage = 2;
+          break;
+        case 2:
+          document.querySelector("#imageContainer img").src = "Image/watermelon_juice.jpg";
+          useImage = 3;
+          break;
+        case 3:
+          document.querySelector("#imageContainer img").src = "Image/apple_juice.jpg";
+          useImage = 1;
+          break;
+        default:
+          break;
+      }
+    }
+  </script>
 </body>
-</html> 
+
+</html>
