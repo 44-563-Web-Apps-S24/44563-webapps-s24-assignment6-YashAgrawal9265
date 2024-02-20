@@ -18,6 +18,18 @@
 
     <div id="result"></div>
 
+    <form>
+        <input type="radio" id="sum" name="operation" value="sum" onclick="chooseOp()">
+        <label for="sum">sum</label><br>
+        
+        <input type="radio" id="multiply" name="operation" value="multiply" onclick="chooseOp()">
+        <label for="multiply">mult</label><br>
+        
+        <input type="radio" id="exponent" name="operation" value="exponent" onclick="chooseOp()">
+        <label for="exponent">exp</label><br>
+    </form>
+
+    <div id="operationResult"></div>
     <script>
         function discount() {
             let price = parseFloat(document.getElementById("price").value);
@@ -25,7 +37,7 @@
             let discountPercent = parseFloat(
                 document.getElementById("reductions").value
             );
-            console.log(price, count, discountPercent);
+            
             let myOutput = "";
 
             for (let i = 0; i < 5; i++) {
@@ -36,6 +48,28 @@
             }
 
             document.getElementById("result").innerHTML = "Totals are: " + myOutput;
+        }
+
+        function chooseOp() {
+            let price = parseFloat(document.getElementById("price").value);
+            let discount = parseFloat(document.getElementById("reductions").value);
+
+            let operationResult = document.getElementById("operationResult");
+            let chosenOperation = document.querySelector('input[name="operation"]:checked').value;
+      
+            if(chosenOperation === "sum"){
+                operationResult.innerHTML = "Sum of price and discount is: " + (price + discount);
+            }
+            else if(chosenOperation === "multiply"){
+                operationResult.innerHTML = "Product of price and discount is: " + (price * discount);
+            }
+            else if(chosenOperation === "exponent"){
+                operationResult.innerHTML = "Price raised to the power of discount is: " + Math.pow(price, discount);
+            }
+            else{
+                operationResult.innerHTML = "No operation selected";
+            }
+
         }
     </script>
 </body>
