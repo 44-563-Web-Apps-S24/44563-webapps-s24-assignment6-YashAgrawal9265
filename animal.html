@@ -13,7 +13,7 @@
 
     <button type="button" onclick="checkAnimal()">Check the guess</button>
   </form>
-  <p id="result">This text will be replaced</p>
+  <div id="result">This text will be replaced</div>
   <div id="imageContainer">
     <img src="Image/apple_juice.jpg" alt="apple_juice" onclick="selectImage()" width="150" height="150" />
   </div>
@@ -37,6 +37,13 @@
       }
 
       document.getElementById("result").innerHTML = `Correct guesses: ${correct}, Wrong guesses: ${wrong}`;
+
+      // Check if wrong guesses are more than correct guesses
+      if (wrong > correct) {
+        document.querySelector('button').onclick = function() {
+          alert("Sorry, too many wrong guesses.");
+        };
+      }
     }
 
     function selectImage() {
